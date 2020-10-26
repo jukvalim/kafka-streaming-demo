@@ -17,7 +17,7 @@ To run this demo, you need to have Kafka installed. This demo only uses one brok
 
 Running the scraper
 -------------------
-The scraper is implemented using (Scrapy framework)[https://scrapy.org/]. It scrapes a web page (up to depth of three, staying in the same domain), extracts text from each page, and pushes it to `scrapedpages` topic. The scraper is run from command line, like this:
+The scraper is implemented using [Scrapy framework](https://scrapy.org/). It scrapes a web page (up to depth of three, staying in the same domain), extracts text from each page, and pushes it to `scrapedpages` topic. The scraper is run from command line, like this:
 
 ```
 scrapy crawl pagetexts -a url=http://quotes.toscrape.com/ -a kafka_broker=<broker host>:<broker port>
@@ -32,3 +32,5 @@ by going to `dashboard` directory and running the command:
 KAFKA_HOST=<broker host> KAFKA_PORT=<broker port> mix phx.server
 ```
 For this, Elixir needs to be installed on your computer, and dependencies from mix.exs installed.
+
+Now you can open browser at `localhost:5000` and see the dashboard there.
