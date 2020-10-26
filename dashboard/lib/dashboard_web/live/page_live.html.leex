@@ -1,0 +1,41 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
+  <p>Peace of mind from prototype to production</p>
+
+  <form phx-change="suggest" phx-submit="search">
+    <input type="text" name="q" value="<%= @query %>" placeholder="Live dependency search" list="results" autocomplete="off"/>
+    <datalist id="results">
+      <%= for {app, _vsn} <- @results do %>
+        <option value="<%= app %>"><%= app %></option>
+      <% end %>
+    </datalist>
+    <button type="submit" phx-disable-with="Searching...">Go to Hexdocs</button>
+  </form>
+</section>
+
+<%= for {domain, %{"good_words" => good_words, "bad_words" => bad_words}} <- @word_counts do %>
+    <h3><%= domain %></h3>
+
+    <section class="row">
+      <h4>Good</h4><br/>:&nbsp;
+    <%= for {word, count} <- good_words do %>
+      <p style="background: lightgreen; margin: 5px;  border-radius: 5px;">
+      <%= word %>: <%= count %>&nbsp;
+      </p>
+    <% end %>
+    </section>
+
+    <section class="row">
+      <h4>Bad</h4>:&nbsp;
+    <%= for {word, count} <- bad_words do %>
+      <p style="background: red; margin: 5px; border-radius: 5px;">
+      <%= word %>: <%= count %>&nbsp;
+      </p>
+    <% end %>
+    </section>
+
+
+
+
+
+<% end %>
